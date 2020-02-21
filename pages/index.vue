@@ -1,25 +1,32 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <v-row>
-        <v-avatar color="blue" size="200">
-          Adam
-        </v-avatar>
-      </v-row>
-      <v-row>
-        Software Developer
-      </v-row>
-      <GitMatrix style="width: 400px" />
-    </v-flex>
-  </v-layout>
+  <div>
+    <v-parallax src="hero.jpg" />
+    <v-container fluid>
+      <v-col>
+        <About :class="listMargin" />
+        <Blog :class="listMargin" />
+        <Work :class="listMargin" />
+        <Projects :class="listMargin" />
+        <Skills :class="listMargin" />
+        <Contact :class="listMargin" />
+      </v-col>
+    </v-container>
+  </div>
 </template>
 
 <script>
-import GitMatrix from '../components/GitMatrix'
+import About from '../components/about'
+import Blog from '../components/blog'
+import Work from '../components/work'
+import Projects from '../components/projects'
+import Skills from '../components/skills'
+import Contact from '../components/contact'
 export default {
-  components: { GitMatrix },
+  components: { Contact, Skills, Projects, Work, Blog, About },
   data() {
-    return {}
+    return {
+      listMargin: 'my-5'
+    }
   }
 }
 </script>

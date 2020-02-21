@@ -91,7 +91,6 @@ export default {
   },
   methods: {
     generateData() {
-      console.log('here')
       const data = []
       let dt = moment()
         .subtract(365, 'days')
@@ -106,7 +105,6 @@ export default {
         })
         dt = dt.add(1, 'day')
       }
-      console.log(data)
       return data
     }
   },
