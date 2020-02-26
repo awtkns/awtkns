@@ -24,15 +24,14 @@
   </v-app>
 </template>
 <script>
-import { mdiLightbulb } from '@mdi/js'
+import { mdiLightbulbOff, mdiLightbulb } from '@mdi/js'
 import Footer from '../components/footer'
 export default {
   components: { Footer },
   data() {
     return {
       title: 'Adam Watkins',
-      isScrolled: false,
-      toggleIcon: mdiLightbulb
+      isScrolled: false
     }
   },
   computed: {
@@ -41,6 +40,9 @@ export default {
     },
     appBarTextColor() {
       return this.isScrolled ? '' : 'white'
+    },
+    toggleIcon() {
+      return this.$vuetify.theme.dark ? mdiLightbulb : mdiLightbulbOff
     }
   },
   methods: {
