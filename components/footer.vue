@@ -1,5 +1,5 @@
 <template>
-  <v-footer>
+  <v-footer absolute>
     <v-col>
       <v-row justify="center">
         <v-btn
