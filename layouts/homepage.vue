@@ -8,14 +8,20 @@
       :color="appBarColor"
     >
       <v-col>
-        <v-row justify="space-between" align="center">
+        <v-row align="center">
           <v-btn icon @click="toggleDarkMode">
             <v-icon size="24px" :color="appBarTextColor" v-text="toggleIcon" />
           </v-btn>
           <v-btn to="" :color="appBarTextColor" text v-text="title" />
-          <v-btn to="/blog" :color="appBarTextColor" text>
-            Blog
-          </v-btn>
+          <v-spacer />
+          <div>
+            <v-btn to="/light" :color="appBarTextColor" text>
+              Light
+            </v-btn>
+            <v-btn to="/blog" :color="appBarTextColor" text>
+              Blog
+            </v-btn>
+          </div>
         </v-row>
       </v-col>
     </v-app-bar>
