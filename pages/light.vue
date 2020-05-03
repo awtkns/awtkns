@@ -1,30 +1,25 @@
 <template>
   <div>
-    <v-row justify="center">
-      <div class="display-1">
-        PiLight
-      </div>
-    </v-row>
-    <v-row justify="center">
-      <v-sheet v-for="i in 30" :key="i" :color="color" class="square" />
-    </v-row>
-    <v-row justify="center">
-      <v-col>
-        <v-color-picker @input="changeColor" />
-      </v-col>
-      <v-col>
-        <v-btn v-model="on" @click="toggleOn" v-text="'on/off'" />
-        <v-btn v-model="on" @click="ripple" v-text="'Ripple'" />
-      </v-col>
-    </v-row>
+    <VueGlow :color="color" intense class="ma-12" elevation="23" >
+      <v-card max-width="300" dark>
+        <v-sheet flat class="title pa-1 text-center">Light Changer</v-sheet>
+        <v-color-picker @input="changeColor" flat style="border-radius: 0" hide-mode-switch mode="hexa"/>
+        <v-card-actions>
+          <v-spacer />
+          <v-btn v-text="'On/off'" text @click="toggleOn"/>
+        </v-card-actions>
+      </v-card>
+    </VueGlow>
   </div>
 </template>
 
 <script>
 import anime from 'animejs/lib/anime.es.js'
+import VueGlow from '../../../Programming/vue-glow/src/VueGlow'
 
 export default {
   name: 'Light',
+  components: { VueGlow },
   data: () => ({
     color: '#fff',
     on: true
@@ -53,8 +48,10 @@ export default {
       })
     },
     toggleOn() {
+      console.log(this.$vuetify)
       this.on ^= true
       this.on ? this.turnOn() : this.turnOff()
+      this.$fireDb.ref('/').set({ on: this.on })
     },
     changeColor(e) {
       this.color = e.hex
@@ -62,11 +59,10 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+@import "assets/elevation-color";
 
-<style scoped>
-.square {
-  height: 20px;
-  width: 20px;
-  margin: 2px;
+#me {
+  @include elevation-color(24, #ff2c00, true)
 }
 </style>

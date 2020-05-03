@@ -19,51 +19,39 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  /*
-   ** Customize the progress-bar color
-   */
+
   loading: { color: '#fff' },
-  /*
-   ** Global CSS
-   */
-  css: [],
-  /*
-   ** Plugins to load before mounting the App
-   */
+  css: [
+    '@/assets/elevation-color.scss'
+  ],
   plugins: [],
-  /*
-   ** Nuxt.js dev-modules
-   */
   buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module',
     '@nuxtjs/vuetify'
   ],
-  /*
-   ** Nuxt.js modules
-   */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-
-    // This is where you import the new plugin
-    '@nuxtjs/prismic'
+    '@nuxtjs/firebase'
   ],
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
-  axios: {},
 
-  prismic: {
-    endpoint: 'https://wtkns.cdn.prismic.io/api/v2',
+  // Firebase
+  firebase: {
+    config: {
+      apiKey: "AIzaSyALqetlEz5SJ5HbLKI1_ppX_pxcr5_VVAs",
+      authDomain: "wtkns-pylight.firebaseapp.com",
+      databaseURL: "https://wtkns-pylight.firebaseio.com",
+      projectId: "wtkns-pylight",
+      storageBucket: "wtkns-pylight.appspot.com",
+      messagingSenderId: "1051586488156",
+      appId: "1:1051586488156:web:4bc353437f2874affb4399",
+      measurementId: "G-CMP6EGJPTM"
+    },
+    services: {
+      realtimeDb: true
+    }
   },
 
-  /*
-   ** vuetify module configuration
-   ** https://github.com/nuxt-community/vuetify-module
-   */
+  // Vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
@@ -80,14 +68,5 @@ export default {
         }
       }
     }
-  },
-  /*
-   ** Build configuration
-   */
-  build: {
-    /*
-     ** You can extend webpack config here
-     */
-    extend(config, ctx) {}
   }
 }
