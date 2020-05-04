@@ -54,7 +54,7 @@
   </div>
 </template>
 <script>
-import VueGlow from '../../../Programming/vue-glow/src/VueGlow'
+import VueGlow from 'vue-glow'
 import DarkModeToggleBtn from '../components/DarkModeToggleBtn'
 
 export default {
