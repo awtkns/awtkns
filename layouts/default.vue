@@ -1,25 +1,25 @@
 <template>
   <v-app>
-    <v-app-bar
-      v-scroll="onScroll"
-      fixed
-      app
-      elevate-on-scroll
-      :color="appBarColor"
-    >
+    <v-app-bar elevate-on-scroll fixed app>
       <v-col>
         <v-row justify="space-between" align="center">
           <v-btn icon @click="toggleDarkMode">
-            <v-icon size="24px" :color="appBarTextColor" v-text="toggleIcon" />
+            <v-icon size="24px" v-text="toggleIcon" />
           </v-btn>
-          <v-toolbar-title :class="appBarTextColor + '--text'" v-text="title" />
-          <v-btn :color="appBarTextColor" text>
+          <v-btn to="/" text v-text="title" />
+          <v-btn text>
             Blog
           </v-btn>
         </v-row>
       </v-col>
     </v-app-bar>
-    <nuxt />
+
+    <v-content>
+      <v-container>
+        <nuxt />
+      </v-container>
+    </v-content>
+
     <Footer />
   </v-app>
 </template>
@@ -35,12 +35,6 @@ export default {
     }
   },
   computed: {
-    appBarColor() {
-      return this.isScrolled ? '' : 'transparent'
-    },
-    appBarTextColor() {
-      return this.isScrolled ? '' : 'white'
-    },
     toggleIcon() {
       return this.$vuetify.theme.dark ? mdiLightbulb : mdiLightbulbOff
     }
@@ -48,9 +42,6 @@ export default {
   methods: {
     toggleDarkMode() {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark
-    },
-    onScroll(e) {
-      this.isScrolled = e.target.scrollingElement.scrollTop !== 0
     }
   }
 }

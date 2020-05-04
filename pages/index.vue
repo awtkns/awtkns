@@ -9,7 +9,7 @@
         You've been warned.
       </v-card-subtitle>
     </v-sheet>
-    <v-container fluid>
+    <v-container>
       <v-col>
         <Work :class="listMargin" />
         <Projects :class="listMargin" />
@@ -23,6 +23,7 @@ import Work from '../components/work'
 import Projects from '../components/projects'
 export default {
   components: { Projects, Work },
+  layout: 'homepage',
   data() {
     return {
       listMargin: 'mb-5'
