@@ -47,7 +47,8 @@ export default {
       measurementId: "G-CMP6EGJPTM"
     },
     services: {
-      realtimeDb: true
+      realtimeDb: true,
+      analytics: true
     }
   },
 
