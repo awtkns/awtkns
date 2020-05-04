@@ -1,5 +1,3 @@
-import { getPosts } from '~/api'
-
 export const state = () => ({
   posts: []
 })
