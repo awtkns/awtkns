@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import FMMode from 'frontmatter-markdown-loader/mode'
 
 export default {
   mode: 'spa',
@@ -22,7 +23,8 @@ export default {
 
   loading: { color: '#fff' },
   css: [
-    '@/assets/elevation-color.scss'
+    "@/assets/main.css",
+    "@/assets/darcula.css"
   ],
   plugins: [],
   buildModules: [
@@ -68,6 +70,24 @@ export default {
           success: colors.green.accent3
         }
       }
+    }
+  },
+
+  build: {
+    extend(config, ctx) {
+      const markdownIt = require('markdown-it');
+      const markdownItPrism = require('markdown-it-prism');
+
+      config.module.rules.push(
+        {
+          test: /\.md$/,
+          loader: "frontmatter-markdown-loader",
+          options: {
+            mode: [FMMode.VUE_COMPONENT],
+            markdownIt: markdownIt({ html: true }).use(markdownItPrism)
+          }
+        }
+      )
     }
   }
 }

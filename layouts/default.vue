@@ -14,8 +14,10 @@
       </v-col>
     </v-app-bar>
 
+
+
     <v-content>
-      <v-container>
+      <v-container fluid>
         <nuxt />
       </v-container>
     </v-content>
@@ -31,7 +33,8 @@ export default {
   data() {
     return {
       title: 'Adam Watkins',
-      isScrolled: false
+      isScrolled: false,
+
     }
   },
   computed: {

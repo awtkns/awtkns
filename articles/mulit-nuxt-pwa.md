@@ -1,6 +1,6 @@
 Multiple PWA's In the same nuxt app
 ===
-```sh
+```
 npm install @nuxt/pwa
 ```
 

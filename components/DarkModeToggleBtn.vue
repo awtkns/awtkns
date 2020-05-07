@@ -1,6 +1,6 @@
 <template>
-  <v-btn icon @click="toggle">
-    <v-icon x-large v-text="icon" />
+  <v-btn icon  @click="toggle">
+    <v-icon v-text="icon" />
   </v-btn>
 </template>
 

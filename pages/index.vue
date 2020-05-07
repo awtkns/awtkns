@@ -1,21 +1,8 @@
 <template>
-  <div>
-    <v-parallax src="hero.jpg" />
-    <v-sheet color="warning" tile>
-      <v-card-title>
-        My website is under development.
-      </v-card-title>
-      <v-card-subtitle>
-        You've been warned.
-      </v-card-subtitle>
-    </v-sheet>
     <v-container>
-      <v-col>
-        <Work :class="listMargin" />
-        <Projects :class="listMargin" />
-      </v-col>
+      <Work :class="listMargin" />
+      <Projects :class="listMargin" />
     </v-container>
-  </div>
 </template>
 
 <script>

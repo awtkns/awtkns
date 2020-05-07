@@ -9,20 +9,26 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col
-        v-for="project in projects"
-        :key="project.id"
-        cols="12"
-        md="4"
-        lg="3"
-      >
-        <v-card :href="project.html_url" target="_blank">
-          <v-card-title class="primary--text" v-text="project.name" />
-          <v-card-subtitle v-text="getDate(project)" />
-          <v-card-text v-text="project.description" />
-          <v-card-actions><v-spacer />{{ project.language }}</v-card-actions>
-        </v-card>
-      </v-col>
+
+        <v-col
+          v-for="project in projects"
+          :key="project.id"
+          cols="12"
+          md="4"
+          lg="3"
+        >
+          <v-lazy transition="expand-x-transition">
+            <v-card :href="project.html_url" target="_blank">
+              <v-card-title class="primary--text" v-text="project.name"/>
+              <v-card-subtitle v-text="getDate(project)"/>
+              <v-card-text v-text="project.description"/>
+              <v-card-actions>
+                <v-spacer/>
+                {{ project.language }}
+              </v-card-actions>
+            </v-card>
+          </v-lazy>
+        </v-col>
     </v-row>
     <v-row>
       <v-col>
