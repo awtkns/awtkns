@@ -24,7 +24,8 @@ export default {
   loading: { color: '#fff' },
   css: [
     "@/assets/main.css",
-    "@/assets/darcula.css"
+    "@/assets/darcula.css",
+    "@/assets/vue-typed-js.css"
   ],
   plugins: [],
   buildModules: [
@@ -35,6 +36,9 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/firebase'
   ],
+  router: {
+    middleware: 'layout'
+  },
 
   // Firebase
   firebase: {
@@ -50,7 +54,7 @@ export default {
     },
     services: {
       realtimeDb: true,
-      analytics: true
+      analytics:  process.env.NODE_ENV === 'production'
     }
   },
 

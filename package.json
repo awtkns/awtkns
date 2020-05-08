@@ -17,13 +17,14 @@
     "chart.js": "^2.9.3",
     "color": "^3.1.2",
     "firebase": "^7.14.2",
+    "frontmatter-markdown-loader": "^3.4.2",
+    "markdown-it": "^10.0.0",
+    "markdown-it-prism": "^2.0.5",
     "moment": "^2.24.0",
     "nuxt": "^2.0.0",
     "vue-chartjs": "^3.5.0",
     "vue-glow": "^0.2.0",
-    "frontmatter-markdown-loader": "^3.4.2",
-    "markdown-it": "^10.0.0",
-    "markdown-it-prism": "^2.0.5"
+    "vue-typed-js": "^0.1.2"
   },
   "devDependencies": {
     "@mdi/js": "^4.9.95",

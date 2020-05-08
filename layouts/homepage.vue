@@ -10,15 +10,23 @@
       <v-btn icon @click="toggleDarkMode">
         <v-icon size="24px" :color="appBarTextColor" v-text="toggleIcon" />
       </v-btn>
-      <v-btn to="/" :color="appBarTextColor" text v-text="'Adam Watkins'" />
+      <v-btn v-if="!isHomepage" to="/" :color="appBarTextColor" text v-text="'Adam Watkins'" />
       <v-spacer />
       <v-btn to="/VueGlow" :color="appBarTextColor" text v-text="'VueGlow'" />
       <v-btn to="/blog" :color="appBarTextColor" text v-text="'Blog'" />
     </v-app-bar>
 
-    <v-parallax v-intersect="intersectObserver" src="hero.jpg" height="400" />
 
-    <v-content>
+    <v-content class="pt-0">
+      <v-parallax v-intersect="intersectObserver" :src="coverImage" :height="coverHeight">
+        <v-row align="end" justify="center">
+          <v-col class="text-center">
+            <VueTypedJs :strings="['Adam Watkins', 'Full-Stack Developer']">
+              <div class="typing display-3 font-weight-bold text-center"></div>
+            </VueTypedJs>
+          </v-col>
+        </v-row>
+      </v-parallax>
       <v-container fluid>
         <nuxt />
       </v-container>
@@ -30,8 +38,10 @@
 <script>
 import { mdiLightbulbOff, mdiLightbulb } from '@mdi/js'
 import Footer from '../components/footer'
+import { VueTypedJs } from 'vue-typed-js'
+
 export default {
-  components: { Footer },
+  components: { Footer, VueTypedJs },
   data() {
     return {
       isScrolled: false,
@@ -41,8 +51,15 @@ export default {
         options: {
           rootMargin: '-48px 0px 0px 0px'
         }
+      },
+      windowSize: {
+        x: 0,
+        y: 0
       }
     }
+  },
+  mounted() {
+    this.windowSize = { x: window.innerWidth, y: window.innerHeight }
   },
   computed: {
     appBarColor() {
@@ -53,6 +70,15 @@ export default {
     },
     toggleIcon() {
       return this.$vuetify.theme.dark ? mdiLightbulb : mdiLightbulbOff
+    },
+    coverHeight() {
+      return this.$store.state.layout.coverHeight * this.windowSize.y
+    },
+    coverImage() {
+      return this.$store.state.layout.coverImage
+    },
+    isHomepage() {
+      return this.$store.state.layout.isHomepage
     }
   },
   methods: {

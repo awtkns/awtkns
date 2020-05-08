@@ -14,8 +14,6 @@
       </v-col>
     </v-app-bar>
 
-
-
     <v-content>
       <v-container fluid>
         <nuxt />
