@@ -98,7 +98,7 @@ export default {
 </script>
 <style scoped>
   #code {
-    background-color: white;
+    background-color: transparent;
     color: inherit;
     box-shadow: none;
   }
