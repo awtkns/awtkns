@@ -2,7 +2,12 @@
   <v-row>
     <v-col cols="12">
       <v-row justify="space-between" no-gutters class="mb-4" >
-        <DarkModeToggleBtn />
+        <div>
+          <v-btn :to="'/'" icon>
+            <v-icon v-text="'mdi-home'" />
+          </v-btn>
+          <DarkModeToggleBtn />
+        </div>
         <div class="text-center display-3 font-weight-black">VueGlow Playground</div>
         <span />
       </v-row>

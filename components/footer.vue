@@ -29,22 +29,10 @@ export default {
   name: 'Footer',
   data: () => ({
     icons: [
-      {
-        icon: mdiEmail,
-        link: 'mailto:adam@wtkns.dev'
-      },
-      {
-        icon: mdiGithubCircle,
-        link: 'https://github.com/adam-watkins'
-      },
-      {
-        icon: mdiLinkedin,
-        link: 'https://www.linkedin.com/in/adam-watkins-yvr/'
-      },
-      {
-        icon: mdiInstagram,
-        link: 'https://www.instagram.com/'
-      }
+      { icon: mdiEmail, link: 'mailto:cadamrun@gmail.com' },
+      { icon: mdiGithubCircle, link: 'https://github.com/adam-watkins' },
+      { icon: mdiLinkedin, link: 'https://www.linkedin.com/in/adam-watkins-yvr/' },
+      { icon: mdiInstagram, link: 'https://www.instagram.com/' }
     ]
   }),
   computed: {

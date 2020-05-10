@@ -21,7 +21,7 @@
       <v-parallax v-intersect="intersectObserver" :src="coverImage" :height="coverHeight">
         <v-row align="end" justify="center">
           <v-col class="text-center">
-            <VueTypedJs :strings="['Adam Watkins', 'Full-Stack Developer']">
+            <VueTypedJs :strings="['Adam Watkins', 'Full-Stack Developer', 'Adam Watkins']">
               <div class="typing display-3 font-weight-bold text-center"></div>
             </VueTypedJs>
           </v-col>

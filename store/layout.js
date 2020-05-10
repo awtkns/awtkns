@@ -6,6 +6,7 @@ export const state = () => ({
 
 export const mutations = {
   setCoverImage: (state, src) => state.coverImage = src,
-  setCoverHeight: (state, percentage ) => state.coverHeight = percentage
+  setCoverHeight: (state, percentage) => state.coverHeight = percentage,
+  setHomepage: (state, isHomepage) => state.isHomepage = isHomepage,
 }
 

@@ -1,5 +1,10 @@
-Multiple PWA's In the same nuxt app
-===
+---
+title: Multiple PWA's In the same nuxt app
+date: 2020-5-6
+tags:
+    - Nuxt
+    - Mobile
+---
 ```
 npm install @nuxt/pwa
 ```
