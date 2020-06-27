@@ -6,10 +6,18 @@
           <v-btn :to="'/'" icon>
             <v-icon v-text="'mdi-home'" />
           </v-btn>
+
           <DarkModeToggleBtn />
         </div>
         <div class="text-center display-3 font-weight-black">VueGlow Playground</div>
+
         <span />
+      </v-row>
+      <v-row no-gutters justify="center">
+        <pre><code>npm install vue-glow</code></pre>
+      </v-row>
+      <v-row no-gutters justify="center" class="mb-4">
+        <pre><code><a href="https://github.com/awtkns/vue-glow">Documentation</a></code></pre>
       </v-row>
       <v-row no-gutters justify="center">
         <v-col sm="12" >
@@ -75,11 +83,17 @@
         <code id="code" class="mt-2 text-center text-monospaced" v-text="tag" />
       </v-row>
     </v-col>
+    <v-footer app>
+      <v-row justify="center" class="body-1">
+
+      </v-row>
+
+    </v-footer>
   </v-row>
 </template>
 <script>
-import VueGlow from 'C:\\Users\\Adam\\Programming\\vue-glow\\src\\VueGlow'
 import DarkModeToggleBtn from '../components/DarkModeToggleBtn'
+import VueGlow from 'vue-glow';
 
 export default {
   name: 'Light',
