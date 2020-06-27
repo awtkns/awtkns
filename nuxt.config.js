@@ -82,16 +82,14 @@ export default {
       const markdownIt = require('markdown-it');
       const markdownItPrism = require('markdown-it-prism');
 
-      config.module.rules.push(
-        {
+      config.module.rules.push({
           test: /\.md$/,
           loader: "frontmatter-markdown-loader",
           options: {
             mode: [FMMode.VUE_COMPONENT],
             markdownIt: markdownIt({ html: true }).use(markdownItPrism)
           }
-        }
-      )
+        })
     }
   }
 }

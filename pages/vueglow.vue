@@ -19,6 +19,7 @@
             :intense="intense"
             :elevation="elevation"
             :color="color ? color.hsla : undefined"
+            :intensity="intensity"
             mode="hsl"
             class=" mx-auto"
             rounded="25"
@@ -34,6 +35,13 @@
                 v-model="elevation"
                 :label="`My elevation is ${elevation}`"
                 max="24"
+                class="px-4"
+              />
+              <v-slider
+                v-model="intensity"
+                :label="`My intensity is ${intensity.toFixed(2)}`"
+                step="0.01"
+                max="4"
                 class="px-4"
               />
               <div class="mb-2">Change my colors</div>
@@ -70,7 +78,7 @@
   </v-row>
 </template>
 <script>
-import VueGlow from 'vue-glow'
+import VueGlow from 'C:\\Users\\Adam\\Programming\\vue-glow\\src\\VueGlow'
 import DarkModeToggleBtn from '../components/DarkModeToggleBtn'
 
 export default {
@@ -86,17 +94,19 @@ export default {
       timer: null,
       fade: false,
       speed: 20,
-      elevation: 24
+      elevation: 24,
+      intensity: 1
     }
   },
   computed: {
     tag() {
-      let f = this.fade ? ` fade interval="${this.speed}"` : ''
-      let e = this.elevation ? ` elevation="${this.elevation}"` : ' flat'
-      let i = this.intense ? ' intense' : ''
-      let c = this.color ? ` color="${this.color.hex}" mode="hex"` : ''
+      let f = this.fade ? ` fade interval="${this.speed}"` : '';
+      let e = this.elevation ? ` elevation="${this.elevation}"` : ' flat';
+      let i = this.intensity !== 1 ? ` intensity="${this.intensity}"` : '';
+      let d = this.intense ? ' intense' : '';
+      let c = this.color ? ` color="${this.color.hex}" mode="hex"` : '';
 
-      return `<VueGlow${c}${f}${e}${i}>Anything you want!</VueGlow>`
+      return `<VueGlow${c}${f}${e}${i}${d}>Anything you want!</VueGlow>`
     }
   },
 }
