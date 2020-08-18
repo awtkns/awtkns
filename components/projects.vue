@@ -59,28 +59,29 @@ export default {
   },
   computed: {
     githubChartURL() {
-      const hex = this.$vuetify.theme.parsedTheme.primary.base.substr(1)
-
-      return `http://ghchart.rshah.org/${hex}/adam-watkins`
+      const hex = this.$vuetify.theme.parsedTheme.primary.base.substr(1);
+      return `http://ghchart.rshah.org/${hex}/awtkns`
     }
   },
   async created() {
-    const result = await this.$axios.get(
-      'https://api.github.com/users/adam-watkins/repos'
-    )
-    this.projects = result.data
+    try {
+      const result = await this.$axios.get('https://api.github.com/users/awtkns/repos');
+      this.projects = result.data
+    } catch (e) {
+
+    }
   },
   methods: {
     getDate(project) {
-      let date = new Date(project.created_at)
-      let year = date.getFullYear()
-      let month = date.toLocaleString('default', { month: 'short' })
-      const start = `${month} ${year}`
+      let date = new Date(project.created_at);
+      let year = date.getFullYear();
+      let month = date.toLocaleString('default', { month: 'short' });
+      const start = `${month} ${year}`;
 
-      date = new Date(project.updated_at)
-      year = date.getFullYear()
-      month = date.toLocaleString('default', { month: 'short' })
-      const end = `${month} ${year}`
+      date = new Date(project.updated_at);
+      year = date.getFullYear();
+      month = date.toLocaleString('default', { month: 'short' });
+      const end = `${month} ${year}`;
 
       return start === end ? start : `${start} - ${end}`
     }

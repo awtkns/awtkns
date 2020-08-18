@@ -30,7 +30,7 @@ export default {
   data: () => ({
     icons: [
       { icon: mdiEmail, link: 'mailto:cadamrun@gmail.com' },
-      { icon: mdiGithubCircle, link: 'https://github.com/adam-watkins' },
+      { icon: mdiGithubCircle, link: 'https://github.com/awtkns' },
       { icon: mdiLinkedin, link: 'https://www.linkedin.com/in/adam-watkins-yvr/' },
       { icon: mdiInstagram, link: 'https://www.instagram.com/' }
     ]
