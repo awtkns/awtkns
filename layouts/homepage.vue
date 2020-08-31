@@ -12,6 +12,7 @@
       </v-btn>
       <v-btn v-if="!isHomepage" to="/" :color="appBarTextColor" text v-text="'Adam Watkins'" />
       <v-spacer />
+      <v-btn href="https://wtkns.myportfolio.com/" :color="appBarTextColor" text v-text="'Photos'" target="_blank" />
       <v-btn to="/VueGlow" :color="appBarTextColor" text v-text="'VueGlow'" />
       <v-btn to="/blog" :color="appBarTextColor" text v-text="'Blog'" />
     </v-app-bar>

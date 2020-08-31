@@ -1,17 +1,12 @@
 <template>
   <v-app>
     <v-app-bar elevate-on-scroll fixed app>
-      <v-col>
-        <v-row justify="space-between" align="center">
-          <v-btn icon @click="toggleDarkMode">
-            <v-icon size="24px" v-text="toggleIcon" />
-          </v-btn>
-          <v-btn to="/" text v-text="title" />
-          <v-btn text>
-            Blog
-          </v-btn>
-        </v-row>
-      </v-col>
+      <v-btn icon @click="toggleDarkMode">
+        <v-icon size="24px" v-text="toggleIcon" />
+      </v-btn>
+      <v-spacer />
+      <v-btn to="/" text v-text="title" />
+      <v-spacer />
     </v-app-bar>
 
     <v-content>
