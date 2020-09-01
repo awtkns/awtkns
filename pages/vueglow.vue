@@ -93,8 +93,7 @@
 </template>
 <script>
 import DarkModeToggleBtn from '../components/DarkModeToggleBtn'
-// import VueGlow from 'vue-glow';
-import VueGlow from 'C:\\Users\\Adam\\Programming\\vue-glow\\src\\VueGlow.vue';
+import VueGlow from 'vue-glow';
 
 export default {
   name: 'Light',
