@@ -17,11 +17,6 @@ def parse_tag(tag) -> dict:
     }
 
 
-@app.route('/api')
-def index():
-    return 'api', 200
-
-
 @app.route('/api/matrix/<user>')
 def matrix(user):
     resp = requests.get(URL % user)
