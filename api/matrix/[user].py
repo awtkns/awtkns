@@ -7,13 +7,14 @@ app = Flask(__name__)
 URL = 'https://github.com/users/%s/contributions'
 
 
-def parse_tag(tag) -> dict:
+def parse_tag(tag, i) -> dict:
     attrs = tag.attrs
 
     return {
       'date': attrs['data-date'],
       'count': attrs['data-count'],
-      'color': attrs['fill']
+      'color': attrs['fill'],
+      'day_of_week': i % 7
     }
 
 
@@ -28,7 +29,11 @@ def matrix(user):
         'date_to': header['data-to'],
         'graph_url': header['data-graph-url'],
         'total_commits': int(soup.find('h2').text.split()[0].replace(',', '')),
-        'days': [parse_tag(tag) for tag in soup.find_all('rect', class_='day')]
+        'days': [parse_tag(tag, i) for i, tag in enumerate(soup.find_all('rect', class_='day'))]
     }
 
     return jsonify(data), 200
+
+
+if __name__ == '__main__':
+    app.run()
