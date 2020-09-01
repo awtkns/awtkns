@@ -3,8 +3,8 @@ import requests
 from flask import Flask, jsonify
 from bs4 import BeautifulSoup
 
-URL = 'https://github.com/users/%s/contributions'
 app = Flask(__name__)
+URL = 'https://github.com/users/%s/contributions'
 
 
 def parse_tag(tag) -> dict:
@@ -17,8 +17,18 @@ def parse_tag(tag) -> dict:
     }
 
 
-@app.route('/github-matrix/<user>')
-def catch_all(user):
+@app.route('/')
+def index():
+    return 'You are at the index page', 200
+
+
+@app.route('/api')
+def index():
+    return 'api', 200
+
+
+@app.route('/github/matrix/<user>')
+def matrix(user):
     resp = requests.get(URL % user)
     soup = BeautifulSoup(resp.text, 'html.parser')
 

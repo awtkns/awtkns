@@ -30,6 +30,9 @@
           </v-lazy>
         </v-col>
     </v-row>
+    <v-row justify="center">
+      <v-btn outlined to="/projects/pilight">Light Control</v-btn>
+    </v-row>
     <v-row>
       <v-col>
         <h5 style="text-align: center">
