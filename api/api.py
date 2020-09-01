@@ -1,7 +1,35 @@
-from flask import Flask, Response
+import requests
+
+from flask import Flask, jsonify
+from bs4 import BeautifulSoup
+
+URL = 'https://github.com/users/%s/contributions'
 app = Flask(__name__)
 
 
-@app.route('/api')
-def catch_all():
-    return Response("<h1>Flask</h1><p>You visited: /%s</p>", mimetype="text/html")
+def parse_tag(tag) -> dict:
+    attrs = tag.attrs
+
+    return {
+        'date': attrs['data-date'],
+        'count': attrs['data-count'],
+        'color': attrs['fill']
+    }
+
+
+@app.route('/github-matrix/<user>')
+def catch_all(user):
+    resp = requests.get(URL % user)
+    soup = BeautifulSoup(resp.text, 'html.parser')
+
+    header = soup.find('div', class_="js-calendar-graph").attrs
+    print(soup.find('h2').text)
+    data = {
+        'date_from': header['data-from'],
+        'date_to': header['data-to'],
+        'graph_url': header['data-graph-url'],
+        'total_commits': int(soup.find('h2').text.split()[0].replace(',', '')),
+        'days': [parse_tag(tag) for tag in soup.find_all('rect', class_='day')]
+    }
+
+    return jsonify(data)
