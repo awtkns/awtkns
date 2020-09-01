@@ -22,7 +22,7 @@ def index():
     return 'api', 200
 
 
-@app.route('/github/matrix/<user>')
+@app.route('/api/matrix/<user>')
 def matrix(user):
     resp = requests.get(URL % user)
     soup = BeautifulSoup(resp.text, 'html.parser')
