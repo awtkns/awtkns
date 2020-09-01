@@ -11,9 +11,9 @@ def parse_tag(tag) -> dict:
     attrs = tag.attrs
 
     return {
-        'date': attrs['data-date'],
-        'count': attrs['data-count'],
-        'color': attrs['fill']
+      'date': attrs['data-date'],
+      'count': attrs['data-count'],
+      'color': attrs['fill']
     }
 
 
@@ -23,7 +23,6 @@ def matrix(user):
     soup = BeautifulSoup(resp.text, 'html.parser')
 
     header = soup.find('div', class_="js-calendar-graph").attrs
-    print(soup.find('h2').text)
     data = {
         'date_from': header['data-from'],
         'date_to': header['data-to'],
@@ -32,4 +31,4 @@ def matrix(user):
         'days': [parse_tag(tag) for tag in soup.find_all('rect', class_='day')]
     }
 
-    return jsonify(data)
+    return jsonify(data), 200
