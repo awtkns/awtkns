@@ -17,11 +17,6 @@ def parse_tag(tag) -> dict:
     }
 
 
-@app.route('/')
-def index():
-    return 'You are at the index page', 200
-
-
 @app.route('/api')
 def index():
     return 'api', 200
