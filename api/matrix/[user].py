@@ -1,9 +1,11 @@
 import requests
 
 from flask import Flask, jsonify
+# from flask_cors import CORS
 from bs4 import BeautifulSoup
 
 app = Flask(__name__)
+# CORS = CORS(app)
 URL = 'https://github.com/users/%s/contributions'
 
 
@@ -14,7 +16,11 @@ def parse_tag(tag, i) -> dict:
       'date': attrs['data-date'],
       'count': attrs['data-count'],
       'color': attrs['fill'],
-      'day_of_week': i % 7
+      'day_of_week': i % 7,
+
+      'x': attrs['data-date'],
+      'y': i % 7,
+      'd': attrs['data-date'],
     }
 
 
