@@ -18,7 +18,12 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Quicksand&display=swap'
+      }
+      ]
   },
 
   loading: { color: '#fff' },
@@ -60,6 +65,7 @@ export default {
 
   // Vuetify
   vuetify: {
+    treeShake: true,
     customVariables: ['~/assets/variables.scss'],
     theme: {
       dark: false,

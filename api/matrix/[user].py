@@ -1,11 +1,11 @@
 import requests
 
 from flask import Flask, jsonify
-# from flask_cors import CORS
+from flask_cors import CORS
 from bs4 import BeautifulSoup
 
 app = Flask(__name__)
-# CORS = CORS(app)
+CORS = CORS(app)
 URL = 'https://github.com/users/%s/contributions'
 
 

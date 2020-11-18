@@ -1,9 +1,9 @@
 <template>
-  <a href="https://github.com/awtkns/fallhack-2020" style="text-decoration: none">
-    <v-hover v-slot="{ hover }">
-      <v-card width="400" id="leaf" dark :elevation="hover ? 12 : 2">
-        <v-img src="leaf.png" />
-        <v-card-text class="text-center" v-text="title" />
+  <a :href="link" target="_blank" style="text-decoration: none">
+    <v-hover v-slot="{ hover }" style="height: available">
+      <v-card :id="cardId" :class="cardClass" :dark="dark" :elevation="hover ? 12 : 2" :color="color" min-height="200" max-height="200" max-width="400">
+        <slot></slot>
+        <v-card-text class="text-center pa-2" v-text="text" style="position: absolute; bottom: 0" />
       </v-card>
     </v-hover>
   </a>
@@ -12,20 +12,13 @@
 <script>
   export default {
     name: "ProjectCard",
-    data: () => ({
-      title: '🏆 Fall Hacks 2020 Winner\t🏆',
-    })
+    props: {
+      link: '',
+      cardId: '',
+      cardClass: '',
+      color: '',
+      dark: Boolean,
+      text: ''
+    }
   }
 </script>
-<style>
-  #leaf {
-    background-image: url("../assets/home.svg");
-    /*background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url("../static/raven.jpg") center center;*/
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-  }
-</style>
