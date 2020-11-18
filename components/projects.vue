@@ -8,8 +8,10 @@
         </h5>
       </v-col>
     </v-row>
+    <v-row justify="center">
+      <v-col sm="12" md="4"><ProjectCard /></v-col>
+    </v-row>
     <v-row>
-
         <v-col
           v-for="project in projects"
           :key="project.id"
@@ -53,8 +55,10 @@
 </template>
 
 <script>
+import ProjectCard from "./ProjectCard";
 export default {
   name: 'Projects',
+  components: {ProjectCard},
   data() {
     return {
       projects: []
