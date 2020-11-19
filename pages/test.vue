@@ -72,7 +72,7 @@ export default {
     this.chartData = {
       datasets: [{
         label: 'Commits',
-        data: (await this.$axios.get('/api/matrix/awtkns')).data.days,
+        data: (await this.$axios.get('http://localhost:5000/api/matrix/awtkns')).data.days,
         borderWidth: 1,
         borderSkipped: false,
         hoverBorderColor: 'yellow',

@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import ProjectCard from "./ProjectCard";
+import ProjectCard from "./projects/ProjectCard";
 export default {
   name: 'Projects',
   components: {ProjectCard},
