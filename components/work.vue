@@ -4,7 +4,7 @@
       <v-col cols="12">
         <h1 style="text-align: center">Professional Experience</h1>
         <h5 style="text-align: center">
-          Current and Past
+          Past and Present
         </h5>
       </v-col>
       <v-col cols="12" sm="6">

@@ -11,27 +11,33 @@
       <v-btn icon @click="toggleDarkMode">
         <v-icon size="24px" :color="appBarTextColor" v-text="toggleIcon" />
       </v-btn>
-      <v-btn v-if="!isHomepage" to="/" :color="appBarTextColor" text v-text="'Adam Watkins'" />
-      {{ !isIntersecting ? 'Adam Watkins': ''}}
+      <v-expand-transition>
+        <span v-if="!isIntersecting" v-text="'Adam Watkins'" />
+      </v-expand-transition>
+
       <v-spacer />
       <v-btn href="https://wtkns.myportfolio.com/" :color="appBarTextColor" text v-text="'Photos'" target="_blank" />
       <v-btn to="/VueGlow" :color="appBarTextColor" text v-text="'VueGlow'" />
-      <v-btn to="/blog" :color="appBarTextColor" text v-text="'Blog'" />
     </v-app-bar>
 
 
     <v-content class="pt-0">
       <v-parallax v-intersect="intersectObserver" :src="coverImage" :height="coverHeight">
-        <v-row align="end" justify="center">
+        <v-row :align="$vuetify.breakpoint.smAndDown ? 'center' : 'end'" justify="center">
           <v-col class="text-center">
             <VueTypedJs :strings="['Adam Watkins', 'Full-Stack Developer', 'Adam Watkins']">
               <div class="typing display-3 font-weight-bold text-center"></div>
             </VueTypedJs>
           </v-col>
         </v-row>
+        <v-row align="end" justify="center" style="position: absolute; bottom: 0; width: 100%">
+          <v-btn icon @click="$vuetify.goTo('#nuxt', {})">
+            <v-icon color="white" x-large>mdi-chevron-down</v-icon>
+          </v-btn>
+        </v-row>
       </v-parallax>
       <v-container fluid>
-        <nuxt />
+        <nuxt id="nuxt" />
       </v-container>
     </v-content>
 
