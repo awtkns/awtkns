@@ -1,36 +1,35 @@
 <template>
   <div>
     <v-row>
-      <v-col>
-        <h1 style="text-align: center">Experience</h1>
+      <v-col cols="12">
+        <h1 style="text-align: center">Professional Experience</h1>
         <h5 style="text-align: center">
-          Professional and Educational
+          Current and Past
         </h5>
       </v-col>
+      <v-col cols="12" sm="6">
+        <BCCancer />
+      </v-col>
+      <v-col cols="12" sm="6">
+        <Langara />
+      </v-col>
     </v-row>
-    <v-timeline :dense="isDense">
-      <v-timeline-item
-        v-for="item in items"
-        :key="item.name"
-        :icon="item.timelineIcon"
-        :color="item.color"
-      >
-        <span slot="opposite">{{ item.date }}</span>
-        <v-card>
-          <v-card-title>
-            {{ item.title }}
-            <v-spacer />
-            <v-icon v-for="icon in item.icons" :key="icon" v-text="icon" />
-          </v-card-title>
-          <v-card-subtitle v-text="item.subtitle" />
-          <v-card-text v-if="isDense" v-text="item.date" />
-        </v-card>
-      </v-timeline-item>
-    </v-timeline>
+    <v-row justify="center" class="pt-4">
+      <v-btn outlined @click="showMore ^= true" v-text="showMore ? 'Less' : 'More'"/>
+    </v-row>
+    <v-expand-transition>
+      <v-row v-if="showMore" justify="center">
+        <v-col cols="12" sm="4">
+          <ReelMac />
+        </v-col>
+      </v-row>
+    </v-expand-transition>
+
   </div>
 </template>
 
 <script>
+
 import {
   mdiLanguagePython,
   mdiNuxt,
@@ -42,11 +41,16 @@ import {
   mdiSchool,
   mdiBriefcase
 } from '@mdi/js'
+import BCCancer from "./work/BCCancer";
+import Langara from "./work/Langara";
+import ReelMac from "./work/ReelMac";
 
 export default {
   name: 'Work',
+  components: {ReelMac, Langara, BCCancer},
   data() {
     return {
+      showMore: false,
       items: [
         {
           title: 'Full Stack Developer',

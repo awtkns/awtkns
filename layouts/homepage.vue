@@ -6,11 +6,13 @@
       dense
       :flat="isIntersecting"
       :color="appBarColor"
+      dark
     >
       <v-btn icon @click="toggleDarkMode">
         <v-icon size="24px" :color="appBarTextColor" v-text="toggleIcon" />
       </v-btn>
       <v-btn v-if="!isHomepage" to="/" :color="appBarTextColor" text v-text="'Adam Watkins'" />
+      {{ !isIntersecting ? 'Adam Watkins': ''}}
       <v-spacer />
       <v-btn href="https://wtkns.myportfolio.com/" :color="appBarTextColor" text v-text="'Photos'" target="_blank" />
       <v-btn to="/VueGlow" :color="appBarTextColor" text v-text="'VueGlow'" />
@@ -64,7 +66,7 @@ export default {
   },
   computed: {
     appBarColor() {
-      return this.isIntersecting ? 'transparent' : ''
+      return this.isIntersecting ? 'transparent' : 'black'
     },
     appBarTextColor() {
       return this.isIntersecting ? 'white' : ''

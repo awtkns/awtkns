@@ -1,10 +1,10 @@
 <template>
-  <ProjectGrid />
+  <BCCancer />
 </template>
 
 <script>
-import ProjectGrid from "../../components/projects/ProjectGrid";
+import BCCancer from "../../components/work/BCCancer";
 export default {
-  components: {ProjectGrid}
+  components: {BCCancer}
 }
 </script>

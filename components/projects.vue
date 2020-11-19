@@ -3,25 +3,31 @@
     <v-row>
       <v-col>
         <h1 style="text-align: center">Technical Projects</h1>
-        <h5 style="text-align: center">
-          Straight From Github
-        </h5>
+        <h5 style="text-align: center">Personal, Professional, and Academic</h5>
+
       </v-col>
     </v-row>
-    <v-row justify="center">
-      <v-col sm="12" md="4"><ProjectCard /></v-col>
+    <ProjectGrid />
+    <v-row justify="center" class="pt-4">
+      <v-btn outlined @click="showMore ^= true" v-text="showMore ? 'Less' : 'More'"/>
     </v-row>
-    <v-row>
-        <v-col
-          v-for="project in projects"
-          :key="project.id"
-          cols="12"
-          md="4"
-          lg="3"
-        >
-          <v-lazy transition="expand-x-transition">
-            <v-card :href="project.html_url" target="_blank">
-              <v-card-title class="primary--text" v-text="project.name"/>
+
+    <v-expand-transition>
+        <v-row v-if="showMore">
+          <v-col cols="12">
+            <h5 style="text-align: center">
+              Straight From Github
+            </h5>
+          </v-col>
+          <v-col
+            v-for="project in projects"
+            :key="project.id"
+            cols="12"
+            md="4"
+            lg="3"
+          >
+            <v-card :href="project.html_url" target="_blank" dark>
+              <v-card-title v-text="project.name"/>
               <v-card-subtitle v-text="getDate(project)"/>
               <v-card-text v-text="project.description"/>
               <v-card-actions>
@@ -29,38 +35,24 @@
                 {{ project.language }}
               </v-card-actions>
             </v-card>
-          </v-lazy>
-        </v-col>
-    </v-row>
-    <v-row justify="center">
-      <v-btn outlined to="/projects/pilight">Light Control</v-btn>
-    </v-row>
-    <v-row>
-      <v-col>
-        <h5 style="text-align: center">
-          Contributions Over the Past Year
-        </h5>
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col>
-        <v-card elevation="24">
-          <v-card-text>
-            <v-img :src="githubChartURL" alt="adam-watkins's Github chart" />
-          </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
+          </v-col>
+        </v-row>
+    </v-expand-transition>
+<!--    <v-row justify="center">-->
+<!--      <v-btn outlined to="/projects/pilight">Light Control</v-btn>-->
+<!--    </v-row>-->
   </div>
 </template>
 
 <script>
 import ProjectCard from "./projects/ProjectCard";
+import ProjectGrid from "./projects/ProjectGrid";
 export default {
   name: 'Projects',
-  components: {ProjectCard},
+  components: {ProjectGrid, ProjectCard},
   data() {
     return {
+      showMore: false,
       projects: []
     }
   },
