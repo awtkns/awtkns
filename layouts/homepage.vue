@@ -26,7 +26,7 @@
         <v-row :align="$vuetify.breakpoint.smAndDown ? 'center' : 'end'" justify="center">
           <v-col class="text-center">
             <VueTypedJs :strings="['Adam Watkins', 'Full-Stack Developer', 'Adam Watkins']">
-              <div class="typing display-3 font-weight-bold text-center"></div>
+              <div class="typing display-3 font-weight-bold text-center" style="color: #FDFBFB"></div>
             </VueTypedJs>
           </v-col>
         </v-row>
@@ -36,8 +36,8 @@
           </v-btn>
         </v-row>
       </v-parallax>
-      <v-container fluid>
-        <nuxt id="nuxt" />
+      <v-container fluid :class="$vuetify.theme.dark ? 'bg-dark' : 'bg'" >
+        <nuxt id="nuxt" style="max-width: 1160px" />
       </v-container>
     </v-content>
 
@@ -72,7 +72,7 @@ export default {
   },
   computed: {
     appBarColor() {
-      return this.isIntersecting ? 'transparent' : 'black'
+      return this.isIntersecting ? 'transparent' : '#202020'
     },
     appBarTextColor() {
       return this.isIntersecting ? 'white' : ''
@@ -88,7 +88,7 @@ export default {
     },
     isHomepage() {
       return this.$store.state.layout.isHomepage
-    }
+    },
   },
   methods: {
     toggleDarkMode() {
@@ -103,3 +103,12 @@ export default {
   }
 }
 </script>
+<style>
+  .bg {
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  }
+  .bg-dark {
+    background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
+    background-blend-mode: multiply;
+  }
+</style>

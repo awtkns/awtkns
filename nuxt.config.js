@@ -66,9 +66,10 @@ export default {
   // Vuetify
   vuetify: {
     treeShake: true,
-    customVariables: ['~/assets/variables.scss'],
+    customVariables: ['~/assets/variables.scss', '~/assets/overrides.sass'],
     theme: {
       dark: false,
+      options: { customProperties: true },
       themes: {
         dark: {
           primary: '#e32902',
