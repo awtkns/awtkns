@@ -28,7 +28,6 @@
             :elevation="elevation"
             :color="color ? color.hsla : undefined"
             :intensity="intensity"
-            mode="hsl"
             class=" mx-auto"
             rounded="25"
             style="width: inherit; max-width: 600px"
@@ -94,6 +93,8 @@
 <script>
 import DarkModeToggleBtn from '../components/DarkModeToggleBtn'
 import VueGlow from 'vue-glow';
+// import VueGlow from 'C:\\Users\\Adam\\Programming\\vue-glow\\src\\VueGlow.vue';
+
 
 export default {
   name: 'Light',

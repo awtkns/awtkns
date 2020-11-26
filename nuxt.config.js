@@ -18,7 +18,12 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Quicksand&display=swap'
+      }
+      ]
   },
 
   loading: { color: '#fff' },
@@ -60,13 +65,15 @@ export default {
 
   // Vuetify
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
+    treeShake: true,
+    customVariables: ['~/assets/variables.scss', '~/assets/overrides.sass'],
     theme: {
       dark: false,
+      options: { customProperties: true },
       themes: {
         dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
+          primary: '#e32902',
+          accent: '#e32902',
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
