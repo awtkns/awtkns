@@ -21,8 +21,8 @@
     </v-app-bar>
 
 
-    <v-content class="pt-0">
-      <v-parallax v-intersect="intersectObserver" :src="coverImage" :height="coverHeight">
+    <v-content class="pt-0"  style="background-color: #2b2b2b">
+      <v-parallax v-intersect="intersectObserver" src="hero2.jpg" :height="coverHeight" class="ma-0">
         <v-row :align="$vuetify.breakpoint.smAndDown ? 'center' : 'end'" justify="center">
           <v-col class="text-center">
             <VueTypedJs :strings="['Adam Watkins', 'Full-Stack Developer', 'Adam Watkins']">
@@ -104,6 +104,10 @@ export default {
 }
 </script>
 <style>
+  .v-parallax__image {
+    transform: translateX(-50%) !important;
+    width: 90% !important;
+  }
   .bg {
     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   }

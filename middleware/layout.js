@@ -1,7 +1,7 @@
 export default ({ route, store }) => {
   if (route.path === '/') {
     store.commit('layout/setCoverHeight', 1)
-    store.commit('layout/setCoverImage', 'hero.jpg')
+    store.commit('layout/setCoverImage', 'hero2.jpg')
     store.commit('layout/setHomepage', true)
   }
   else {

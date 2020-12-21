@@ -1,5 +1,5 @@
 export const state = () => ({
-  coverImage: 'hero.jpg',
+  coverImage: 'hero2.jpg',
   coverHeight: 1,
   isHomepage: true,
 })
