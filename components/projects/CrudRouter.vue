@@ -1,5 +1,5 @@
 <template>
-  <ProjectCard link="https://fastapi-crudrouter.wtkns.dev/" dark style="height: inherit"
+  <ProjectCard link="https://fastapi-crudrouter.awtkns.com/" dark style="height: inherit"
                text="A FastAPI Router Extension" card-class="d-flex align-center" card-id="crudRouter"
                color="#4fc08d">
     <v-col cols="12">
