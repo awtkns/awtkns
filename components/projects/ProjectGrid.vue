@@ -13,11 +13,12 @@ import Raiven from "./Raiven";
 import VueGlow from "./VueGlow";
 import SodokuWorld from "./SodokuWorld";
 import BinIt from "./BinIt";
+import CrudRouter from "./CrudRouter";
 
 export default {
 name: "ProjectGrid",
   data: () => ({
-    projects: [Leaf, Biodi, Raiven, VueGlow, SodokuWorld, BinIt]
+    projects: [Leaf, Biodi, Raiven, VueGlow, SodokuWorld, BinIt, CrudRouter]
   })
 }
 </script>
