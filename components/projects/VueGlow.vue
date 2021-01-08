@@ -1,7 +1,10 @@
 <template>
-  <ProjectCard link="https://github.com/awtkns/vue-glow" dark style="height: inherit"
-               text="NPM Package Used by Thousands" card-class="d-flex align-center" card-id="vueglow"
-               color="#4fc08d">
+  <ProjectCard
+    link="https://github.com/awtkns/vue-glow"
+    repo="awtkns/vue-glow" dark style="height: inherit"
+    text="NPM Package Used by Thousands"
+    card-class="d-flex align-center" card-id="vueglow"
+    color="#4fc08d">
     <v-row justify="center">
       <div class="display-3 text-center" style="font-weight: bold">Vue Glow</div>
     </v-row>
