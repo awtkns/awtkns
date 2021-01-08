@@ -2,7 +2,7 @@
   <ProjectCard
     link="https://github.com/awtkns/vue-glow"
     repo="awtkns/vue-glow" dark style="height: inherit"
-    text="NPM Package Used by Thousands"
+    text="NPM Package Providing Dynamic Glow Effects"
     card-class="d-flex align-center" card-id="vueglow"
     color="#4fc08d">
     <v-row justify="center">
