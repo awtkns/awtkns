@@ -1,6 +1,6 @@
 <template>
   <ProjectCard
-    link="https://fastapi-crudrouter.wtkns.dev/"
+    link="https://fastapi-crudrouter.awtkns.com/"
     dark
     style="height: inherit"
     text="A FastAPI Router Extension"
