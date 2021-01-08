@@ -17,7 +17,7 @@
 
       <v-spacer />
       <v-btn href="https://wtkns.myportfolio.com/" :color="appBarTextColor" text v-text="'Photos'" target="_blank" />
-      <v-btn to="/VueGlow" :color="appBarTextColor" text v-text="'VueGlow'" />
+      <v-btn href="https://github.com/awtkns" :color="appBarTextColor" text v-text="'Github'" />
     </v-app-bar>
 
 
