@@ -1,6 +1,6 @@
 <template>
   <ProjectCard
-    link="https://github.com/awtkns/fallhack-2020" color="purple" dark style="height: inherit; width: auto"
+    link="https://qurit.github.io/biodi" color="purple" dark style="height: inherit; width: auto"
     text="Biodistribution Platform" card-class="d-flex align-center justify-center" card-id="biodi"
   >
     <v-row justify="center" no-gutters align="center">
