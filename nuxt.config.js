@@ -45,7 +45,6 @@ export default {
     middleware: 'layout'
   },
 
-  // Firebase
   firebase: {
     config: {
       apiKey: "AIzaSyALqetlEz5SJ5HbLKI1_ppX_pxcr5_VVAs",

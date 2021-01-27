@@ -1,7 +1,7 @@
 <template>
   <ProjectCard
     link="https://qurit.github.io/biodi" color="purple" dark style="height: inherit; width: auto"
-    text="Biodistribution Platform" card-class="d-flex align-center justify-center" card-id="biodi"
+    text="Biodistribution Platform for Radiopharmaceutical Development" card-class="d-flex align-center justify-center" card-id="biodi"
   >
     <v-row justify="center" no-gutters align="center">
       <div class="display-3" style="font-weight: bold">Biodi</div>

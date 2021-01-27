@@ -18,7 +18,7 @@ import CrudRouter from "./CrudRouter";
 export default {
 name: "ProjectGrid",
   data: () => ({
-    projects: [Leaf, Biodi, Raiven, VueGlow, SodokuWorld, BinIt, CrudRouter]
+    projects: [Leaf, CrudRouter, Raiven, BinIt, VueGlow, Biodi, SodokuWorld]
   })
 }
 </script>
