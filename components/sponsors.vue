@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="sponsors">
     <v-row>
       <v-col>
         <h1 style="text-align: center">Network</h1>
@@ -7,6 +7,7 @@
       </v-col>
     </v-row>
 
+<!-- Sponsors -->
     <v-row justify="center">
       <a v-for="s in sponsors" :href="s.profile">
         <v-avatar size="62">
@@ -15,6 +16,7 @@
       </a>
     </v-row>
 
+<!-- Followers -->
     <v-row>
       <v-col>
         <h5 style="text-align: center">Github Followers</h5>
@@ -27,7 +29,6 @@
         </v-avatar>
       </a>
     </v-row>
-
   </div>
 </template>
 
