@@ -1,0 +1,17 @@
+.theme--light.v-application pre code {
+  background-color: inherit;
+  box-shadow: none;
+  color: inherit;
+}
+.theme--dark.v-application pre code {
+  background-color: inherit;
+  box-shadow: none;
+  color: inherit;
+}
+
+.v-application pre code:before {
+  content: none;
+}
+.v-application pre code:after {
+  content: none;
+}

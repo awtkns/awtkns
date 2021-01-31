@@ -22,15 +22,14 @@
 
 
     <v-main class="pt-0">
-      <v-parallax v-intersect="intersectObserver" :src="coverImage" :height="coverHeight">
+      <v-parallax v-intersect="intersectObserver" src="hero.jpg" :height="coverHeight">
 
 <!-- Title Text -->
-        <v-row :align="$vuetify.breakpoint.smAndDown || !isHomepage ? 'center' : 'end'" justify="center">
+        <v-row :align="$vuetify.breakpoint.smAndDown ? 'center' : 'end'" justify="center">
           <v-col class="text-center">
-            <VueTypedJs v-if="isHomepage" :strings="title">
+            <VueTypedJs v-if="isHomepage" :strings="['Adam Watkins', 'Full-Stack Developer', 'Adam Watkins']">
               <div class="typing display-3 font-weight-bold text-center" style="color: #FDFBFB"></div>
             </VueTypedJs>
-            <div v-else class="display-3 font-weight-bold text-center" style="color: #2b2b2b">{{ title }}</div>
           </v-col>
         </v-row>
 
@@ -75,7 +74,7 @@ export default {
     appBarColor: ctx => ctx.isIntersecting ? 'transparent' : '#202020',
     appBarTextColor: ctx => ctx.isIntersecting ? 'white' : '',
     toggleIcon: ({$vuetify}) => $vuetify.theme.dark ? mdiLightbulb : mdiLightbulbOff,
-    coverHeight: ({$store, windowSize}) => $store.state.layout.coverHeight * windowSize.y,
+    coverHeight: ({windowSize}) => windowSize.y,
   },
   methods: {
     toggleDarkMode() { this.$vuetify.theme.dark ^= true },

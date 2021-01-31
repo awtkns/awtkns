@@ -1,6 +1,4 @@
 const HOMEPAGE = {
-  title: ['Adam Watkins', 'Full-Stack Developer', 'Adam Watkins'],
-  coverImage: 'hero.jpg',
   coverHeight: 1,
   isHomepage: true,
   isCollapsed: false,
@@ -8,14 +6,18 @@ const HOMEPAGE = {
 
 export const state = () => ({
   ...HOMEPAGE,
+  title: ''
 })
 
 export const mutations = {
-  setHomepage: (state) => state = HOMEPAGE,
+  setHomepage: (state) => {
+    state.title = HOMEPAGE.title
+    state.isHomepage = HOMEPAGE.isHomepage
+    state.coverHeight = HOMEPAGE.coverHeight
+  },
   setArticle: (state, article) => {
     state.title = article.title
     state.isHomepage = false
-    state.coverImage = article.hero
     state.coverHeight = .2
   },
   setCollapsed: (state, isCollapsed) => state.isCollapsed = isCollapsed,

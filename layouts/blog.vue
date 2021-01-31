@@ -15,7 +15,7 @@
       <h1 v-if="!isIntersecting" v-text="title" class="text-center" />
 
       <v-spacer />
-      <v-btn to="/" :color="appBarTextColor" text v-text="'Home'" target="_blank" />
+      <v-btn href="/" :color="appBarTextColor" text v-text="'Home'" />
     </v-app-bar>
 
 
