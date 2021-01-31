@@ -1,11 +1,29 @@
 <template>
   <v-container>
-    <article style="max-width: 680px" class="mx-auto">
-      <h1 class="display-3 font-weight-bold mb-4" v-text="article.title" />
-      <v-img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" />
-      <v-btn>sjhds</v-btn>
-      <nuxt-content :document="article" />
-    </article>
+    <v-row>
+      <v-col></v-col>
+      <v-col>
+        <article style="max-width: 680px" class="mx-auto">
+          <h1 class="display-3 font-weight-bold mb-8" v-text="article.title"/>
+          <h2>{{article.date}}</h2>
+          <v-sheet elevation="12">
+            <v-img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"/>
+          </v-sheet>
+
+          <nuxt-content :document="article" class="mt-8"/>
+        </article>
+      </v-col>
+      <v-col>
+        <nav :style="!$store.state.layout.isCollapsed ? 'position: fixed; top: 60px' : ''">
+          <span class="display-1">Contents</span>
+          <ul>
+            <li v-for="link of article.toc" :key="link.id">
+              <NuxtLink :to="`#${link.id}`">{{ link.text }}</NuxtLink>
+            </li>
+          </ul>
+        </nav>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 

@@ -84,6 +84,7 @@ export default {
     },
     onIntersect (entries, observer) {
       this.isIntersecting = entries[0].isIntersecting
+      this.$store.commit('layout/setCollapsed', this.isIntersecting)
     }
   }
 }

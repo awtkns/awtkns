@@ -1,122 +1,97 @@
 ---
 title: DICOM Networking in Python
 date: 2020-5-6
-hero: https://images.unsplash.com/photo-1543575172-e1033f739205
+hero: https://images.unsplash.com/photo-1528158222524-d4d912d2e208
 ---
-```
-npm install @nuxt/pwa
+
+## Background
+
+At Qurit, our research relies heavily on analyzing medical images from PET and SPECT scanners.  These images, and the 
+majority of all clinical images, come in the DICOM file format.  A somewhat underrated yet needed part of the research 
+process is the automation of image retrieval and anonymization.  This is an important step before clinical images can be 
+used to train and test our machine learning models.  Using DICOM's underlying networking protocol, imaging pipelines can 
+be created to automate the process of image acquisition, anonymization, and analysis.
+
+Under the hood, DICOM is not only a file format (.dcm) but also a fully featured, and admittedly somewhat archaic, 
+networking protocol. The DICOM networking protocol resides just above the TCP layer in the OSI model.  Built upon TCP/IP, 
+the DICOM protocol relies upon making a handshake before communication between two remotes can begin.  In DICOM this is 
+called creating an association.
+
+In this post I will show how to associate with a remote DICOM server such as PACS (Picture Archiving and Communication System) 
+server or PET scanner. I will also show how to send a C-Echo to the remote associated with; the first of four basic actions. 
+After the C-Echo, I will move on to the other, increasingly advanced, actions shown below.
+ 
+## Preforming a C-Echo
+ 
+This article and all future articles will be using pynetdicom (1.5.1). Future articles will also be using pydicom (1.4.1).  
+Pynetdicom handles the low level networking implementation whilst pydiom will allow us to read, write, query DICOM files.
+First we are going to create some helper classes.
+ 
+ ```python
+from dataclasses import dataclass
+
+from pynetdicom.sop_class import VerificationSOPClass
+from pynetdicom import AE 
+
+
+@dataclass
+class Modality:
+    addr: str
+    port: int
+    ae_title: str
+
+class Association:
+    def __init__(self, modality, context):
+        self.modality = modality
+        self.context = context
+
+    def __enter__(self):
+        ae = AE()
+        ae.add_requested_context(self.context)
+        self._association = ae.associate(**vars(self.modality))
+        return self._association
+
+    def __exit__(self, *args):
+        self._association.release()
+        self._association = None
 ```
 
-Make sure to disable auto manifest generation, we also don't want to generate our own icons.  UNSURE ABOUT META
-```js
-export default {
-    modules: [ '@nuxtjs/pwa' ],
+Above, we are first creating a modality class to keep all our modalities organized.  For our purposes, a modality is a 
+remote that we will be connecting with.  Each remote has an address, a port, and an application entity (AE) title.
 
-    // Here is the trick
-    pwa: {
-        manifest: false,
-        icon: false,
-        Meta: false
-      },
-}
-```
-now we are going to create our manifests by can hand and place them in the static folder
-```json
-{
-  "name": "App 1",
-  "short_name": "Pwa number one",
-  "description": "The first app in my guide",
-  "icons": [
-    {
-      "src": "/manifests/phsa_icons/icon_64.238c63.png",
-      "sizes": "64x64",
-      "type": "image/png"
-    },
-    {
-      "src": "/manifests/phsa_icons/icon_120.238c63.png",
-      "sizes": "120x120",
-      "type": "image/png"
-    },
-    {
-      "src": "/manifests/phsa_icons/icon_144.238c63.png",
-      "sizes": "144x144",
-      "type": "image/png"
-    },
-    {
-      "src": "/manifests/phsa_icons/icon_152.238c63.png",
-      "sizes": "152x152",
-      "type": "image/png"
-    },
-    {
-      "src": "/manifests/phsa_icons/icon_192.238c63.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/manifests/phsa_icons/icon_384.238c63.png",
-      "sizes": "384x384",
-      "type": "image/png"
-    },
-    {
-      "src": "/manifests/phsa_icons/icon_512.238c63.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ],
-  "start_url": "/app1?standalone=true",
-  "display": "Standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#fff",
-  "lang": "en"
-}
-```
-Doo the same thing for app number two
+Second, and more importantly, we are creating an association class to act as a context manger; helping to create and 
+release associations.  This is accomplished by implementing both dunder enter and dunder exit.  Even though more complex 
+initially, I believe using a context manger is good practice as it ensures that releasing associations will never be 
+forgotten (even under error conditions). As an added bonus, it will make all future code shorter, cleaner and frankly 
+more pythonic.
 
-**Note** Make sure you edit the start url
+```python
+if __name__ == '__main__':
+    modality = Modality('127.0.0.1', 104, 'DISCOVERY')
 
-Now our static folder should look like this
+    with Association(modality, VerificationSOPClass) as assoc:
+        resp = assoc.send_c_echo()
+        print(f'Modality responded with status: {resp.Status}')
 ```
-Static
-   │   favicon.ico
-   │   sw.js
-   └───manifests
-       │   PHSA_manifest.json
-       │   VCH_manifest.json
-       ├───app1_icons
-       │       icon_120.238c63.png
-       │       icon_144.238c63.png
-       │       icon_152.238c63.png
-       │       icon_192.238c63.png
-       │       icon_384.238c63.png
-       │       icon_512.238c63.png
-       │       icon_64.238c63.png
-       └───app2_icons
-               icon-128x128.png
-               icon-144x144.png
-               icon-152x152.png
-               icon-192x192.png
-               icon-384x384.png
-               icon-512x512.png
-               icon-72x72.png
-               icon-96x96.png
+
+Here we are finally testing our connection with the modality that we are trying to reach. If all goes well, the modality 
+should respond with the successful status code 0x0000. Notice how by using context management, we are able to release 
+the association automatically.
+
+If we were to forgo using automatic context management, the implementation would look like the code below.  It would be 
+imperative to ensure that association is always released to prevent tying up valuable server resources.
+
+```python
+if __name__ == '__main__':
+    ae = AE()
+    ae.add_requested_context(VerificationSOPClass)
+    assoc = ae.associate('127.0.0.1', 104, ae_title='DISCOVERY')
+    
+    try:
+        resp = assoc.send_c_echo()
+        print(f'Modality responded with status: {resp.Status}')
+        assoc.release()
+    except Exception as e:
+        assoc.release()
+        raise e
 ```
-Now add this to the head of the page.
-```js
-export default {
-    head() {
-      return { link: [{ rel: 'manifest', href: '/manifests/app1_manifest.json' }] }
-    },
-    ...
-}
-```
-If we wanted to add a dyanmic manifest based on the route, you can replace the link with:
-```js
-export default {
-    head() {
-      return { link: [{ rel: 'manifest', href: `/manifests/${this.myroute}_manifest.json` }] }
-    },
-    ...
-}
-```
-And voila!
-Donso

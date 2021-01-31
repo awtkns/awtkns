@@ -2,7 +2,7 @@ import colors from 'vuetify/es5/util/colors'
 // import FMMode from 'frontmatter-markdown-loader/mode'
 
 export default {
-  ssr: 'false',
+  mode: 'spa',
   /*
    ** Headers of the page
    */
@@ -60,6 +60,14 @@ export default {
     services: {
       realtimeDb: true,
       analytics:  process.env.NODE_ENV === 'production'
+    }
+  },
+
+  content: {
+    markdown: {
+      prism: {
+        theme: './assets/darcula.css'
+      }
     }
   },
 
