@@ -21,25 +21,31 @@
     </v-app-bar>
 
 
-    <v-content class="pt-0">
+    <v-main class="pt-0">
       <v-parallax v-intersect="intersectObserver" :src="coverImage" :height="coverHeight">
-        <v-row :align="$vuetify.breakpoint.smAndDown ? 'center' : 'end'" justify="center">
+
+<!-- Title Text -->
+        <v-row :align="$vuetify.breakpoint.smAndDown || !isHomepage ? 'center' : 'end'" justify="center">
           <v-col class="text-center">
-            <VueTypedJs :strings="['Adam Watkins', 'Full-Stack Developer', 'Adam Watkins']">
+            <VueTypedJs v-if="isHomepage" :strings="title">
               <div class="typing display-3 font-weight-bold text-center" style="color: #FDFBFB"></div>
             </VueTypedJs>
+            <div v-else class="display-3 font-weight-bold text-center" style="color: #2b2b2b">{{ title }}</div>
           </v-col>
         </v-row>
+
         <v-row align="end" justify="center" style="position: absolute; bottom: 0; width: 100%">
           <v-btn icon @click="$vuetify.goTo('#nuxt', {})">
             <v-icon color="white" x-large>mdi-chevron-down</v-icon>
           </v-btn>
         </v-row>
       </v-parallax>
+
+<!-- Content -->
       <v-container fluid :class="$vuetify.theme.dark ? 'bg-dark' : 'bg'" >
         <nuxt id="nuxt" style="max-width: 1160px" />
       </v-container>
-    </v-content>
+    </v-main>
 
     <Footer />
   </v-app>
@@ -48,52 +54,31 @@
 import { mdiLightbulbOff, mdiLightbulb } from '@mdi/js'
 import Footer from '../components/footer'
 import { VueTypedJs } from 'vue-typed-js'
+import { mapState } from 'vuex'
 
 export default {
   components: { Footer, VueTypedJs },
-  data() {
-    return {
+  data: (ctx) => ({
       isScrolled: false,
       isIntersecting: false,
       intersectObserver: {
-        handler: this.onIntersect,
-        options: {
-          rootMargin: '-48px 0px 0px 0px'
-        }
+        handler: ctx.onIntersect,
+        options: { rootMargin: '-48px 0px 0px 0px' }
       },
-      windowSize: {
-        x: 0,
-        y: 0
-      }
-    }
-  },
+      windowSize: { x: 0, y: 0 },
+  }),
   mounted() {
     this.windowSize = { x: window.innerWidth, y: window.innerHeight }
   },
   computed: {
-    appBarColor() {
-      return this.isIntersecting ? 'transparent' : '#202020'
-    },
-    appBarTextColor() {
-      return this.isIntersecting ? 'white' : ''
-    },
-    toggleIcon() {
-      return this.$vuetify.theme.dark ? mdiLightbulb : mdiLightbulbOff
-    },
-    coverHeight() {
-      return this.$store.state.layout.coverHeight * this.windowSize.y
-    },
-    coverImage() {
-      return this.$store.state.layout.coverImage
-    },
-    isHomepage() {
-      return this.$store.state.layout.isHomepage
-    },
+    ...mapState('layout', ['title', 'coverImage', 'isHomepage']),
+    appBarColor: ctx => ctx.isIntersecting ? 'transparent' : '#202020',
+    appBarTextColor: ctx => ctx.isIntersecting ? 'white' : '',
+    toggleIcon: ({$vuetify}) => $vuetify.theme.dark ? mdiLightbulb : mdiLightbulbOff,
+    coverHeight: ({$store, windowSize}) => $store.state.layout.coverHeight * windowSize.y,
   },
   methods: {
-    toggleDarkMode() {
-      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
-    },
+    toggleDarkMode() { this.$vuetify.theme.dark ^= true },
     onScroll(e) {
       this.isScrolled = e.target.scrollingElement.scrollTop !== 0
     },
@@ -108,7 +93,9 @@ export default {
     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   }
   .bg-dark {
-    background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
+    background:
+      linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%),
+      linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
     background-blend-mode: multiply;
   }
 </style>

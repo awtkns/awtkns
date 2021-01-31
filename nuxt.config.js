@@ -1,8 +1,8 @@
 import colors from 'vuetify/es5/util/colors'
-import FMMode from 'frontmatter-markdown-loader/mode'
+// import FMMode from 'frontmatter-markdown-loader/mode'
 
 export default {
-  mode: 'spa',
+  ssr: 'false',
   /*
    ** Headers of the page
    */
@@ -39,7 +39,8 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/firebase'
+    '@nuxtjs/firebase',
+    '@nuxt/content'
   ],
   router: {
     middleware: 'layout'
@@ -83,19 +84,19 @@ export default {
     }
   },
 
-  build: {
-    extend(config, ctx) {
-      const markdownIt = require('markdown-it');
-      const markdownItPrism = require('markdown-it-prism');
-
-      config.module.rules.push({
-          test: /\.md$/,
-          loader: "frontmatter-markdown-loader",
-          options: {
-            mode: [FMMode.VUE_COMPONENT],
-            markdownIt: markdownIt({ html: true }).use(markdownItPrism)
-          }
-        })
-    }
-  }
+  // build: {
+  //   extend(config, ctx) {
+  //     const markdownIt = require('markdown-it');
+  //     const markdownItPrism = require('markdown-it-prism');
+  //
+  //     config.module.rules.push({
+  //         test: /\.md$/,
+  //         loader: "frontmatter-markdown-loader",
+  //         options: {
+  //           mode: [FMMode.VUE_COMPONENT],
+  //           markdownIt: markdownIt({ html: true }).use(markdownItPrism)
+  //         }
+  //       })
+  //   }
+  // }
 }

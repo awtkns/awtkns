@@ -1,9 +1,7 @@
 ---
-title: Multiple PWA's In the same nuxt app
+title: DICOM Networking in Python
 date: 2020-5-6
-tags:
-    - Nuxt
-    - Mobile
+hero: https://images.unsplash.com/photo-1543575172-e1033f739205
 ---
 ```
 npm install @nuxt/pwa
