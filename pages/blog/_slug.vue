@@ -7,7 +7,7 @@
           <h1 class="display-3 font-weight-bold mb-8" v-text="article.title"/>
           <h2>{{article.date}}</h2>
           <v-sheet elevation="12">
-            <v-img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"/>
+            <v-img :src="article.hero"/>
           </v-sheet>
 
           <nuxt-content :document="article" class="mt-8"/>
@@ -29,12 +29,14 @@
 
 <script>
   export default {
-    layout: 'homepage',
+    layout: 'blog',
     data: () => ({
-      article: undefined
+      article: undefined,
     }),
     created() {
+      console.log(this)
       this.$store.commit('layout/setArticle', this.article)
+
     },
     async asyncData({ $content, params }) {
       const article = await $content('articles', params.slug).fetch()

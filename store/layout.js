@@ -13,7 +13,7 @@ export const state = () => ({
 export const mutations = {
   setHomepage: (state) => state = HOMEPAGE,
   setArticle: (state, article) => {
-    state.title = ''
+    state.title = article.title
     state.isHomepage = false
     state.coverImage = article.hero
     state.coverHeight = .2

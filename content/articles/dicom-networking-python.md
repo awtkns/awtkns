@@ -23,8 +23,9 @@ After the C-Echo, I will move on to the other, increasingly advanced, actions sh
  
 ## Preforming a C-Echo
  
-This article and all future articles will be using pynetdicom (1.5.1). Future articles will also be using pydicom (1.4.1).  
-Pynetdicom handles the low level networking implementation whilst pydiom will allow us to read, write, query DICOM files.
+This article and all future articles will be using *pynetdicom* and  *pydicom*. Pynetdicom handles the low level 
+networking implementation whilst pydiom will allow us to read, write, query DICOM files. 
+
 First we are going to create some helper classes.
  
  ```python
