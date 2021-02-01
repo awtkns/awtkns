@@ -16,9 +16,9 @@ export const mutations = {
     state.coverHeight = HOMEPAGE.coverHeight
   },
   setArticle: (state, article) => {
-    state.title = article.title
+    state.title = article.title || 'NO NAME'
     state.isHomepage = false
-    state.coverHeight = .2
+    state.coverHeight = article.coverHeight || .2
   },
   setCollapsed: (state, isCollapsed) => state.isCollapsed = isCollapsed,
 }

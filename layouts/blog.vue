@@ -23,7 +23,7 @@
       <v-sheet flat v-intersect="intersectObserver" :height="coverHeight" color="#202020" dark>
         <v-row align="center" justify="center" style="height: 100%">
           <v-col class="text-center">
-            <div class="display-3 font-weight-bold text-center">{{ title }}</div>
+            <h1 class="display-3 font-weight-bold text-center" style="font-family: 'Playfair Display' !important;">{{ title }}</h1>
           </v-col>
         </v-row>
       </v-sheet>

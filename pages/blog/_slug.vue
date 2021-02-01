@@ -4,8 +4,23 @@
       <v-col v-if="$vuetify.breakpoint.mdAndUp"></v-col>
       <v-col>
         <article style="max-width: 680px" class="mx-auto" >
-          <h1 class="display-3 font-weight-bold mb-8" v-text="article.title"/>
-          <h2>{{article.date}}</h2>
+          <v-row justify="end" align="end">
+            <v-col>
+
+              <v-list-item class="pl-0">
+                <v-list-item-avatar>
+                  <v-img  src="https://avatars.githubusercontent.com/u/32209255"></v-img>
+                </v-list-item-avatar>
+                <v-list-item-content>
+                  <v-list-item-title v-text="article.author" />
+                  <v-list-item-subtitle v-text="article.date" />
+                </v-list-item-content>
+              </v-list-item>
+            </v-col>
+            <v-col class="text-right">
+              <v-chip v-for="t in article.tags" class="mr-1 my-2" dark color="black" small>{{ t }}</v-chip>
+            </v-col>
+          </v-row>
           <v-sheet elevation="12">
             <v-img :src="article.hero"/>
           </v-sheet>
@@ -36,10 +51,8 @@
     data: () => ({
       article: undefined,
     }),
-    created() {
-      console.log(this)
-      this.$store.commit('layout/setArticle', this.article)
-
+    async created() {
+      await this.$store.commit('layout/setArticle', this.article)
     },
     async asyncData({ $content, params }) {
       const article = await $content('articles', params.slug).fetch()
@@ -47,3 +60,5 @@
     }
   }
 </script>
+
+

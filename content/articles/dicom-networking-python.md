@@ -1,26 +1,30 @@
 ---
 title: DICOM Networking in Python
 date: 2020-5-6
+author: Adam Watkins
 hero: https://images.unsplash.com/photo-1528158222524-d4d912d2e208
+tags:
+ - python
+ - DICOM
+ - research
 ---
 
 ## Background
 
-At Qurit, our research relies heavily on analyzing medical images from PET and SPECT scanners.  These images, and the 
-majority of all clinical images, come in the DICOM file format.  A somewhat underrated yet needed part of the research 
+At [Qurit](https://qurit.ca), my research relies heavily on creating automated medical images processing pipelines with 
+from PET, MRI, and CT scanners.  These images, and the majority of all clinical images, come in the DICOM file format.
+A somewhat underrated yet needed part of the research 
 process is the automation of image retrieval and anonymization.  This is an important step before clinical images can be 
 used to train and test our machine learning models.  Using DICOM's underlying networking protocol, imaging pipelines can 
 be created to automate the process of image acquisition, anonymization, and analysis.
+
+![DICOM PROTOCOL](https://rahmimlab.files.wordpress.com/2020/07/dicom1.png)
 
 Under the hood, DICOM is not only a file format (.dcm) but also a fully featured, and admittedly somewhat archaic, 
 networking protocol. The DICOM networking protocol resides just above the TCP layer in the OSI model.  Built upon TCP/IP, 
 the DICOM protocol relies upon making a handshake before communication between two remotes can begin.  In DICOM this is 
 called creating an association.
 
-In this post I will show how to associate with a remote DICOM server such as PACS (Picture Archiving and Communication System) 
-server or PET scanner. I will also show how to send a C-Echo to the remote associated with; the first of four basic actions. 
-After the C-Echo, I will move on to the other, increasingly advanced, actions shown below.
- 
 ## Preforming a C-Echo
  
 This article and all future articles will be using *pynetdicom* and  *pydicom*. Pynetdicom handles the low level 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row>
+    <v-row v-if="!dense">
       <v-col>
         <h1 style="text-align: center">Blog</h1>
         <h5 style="text-align: center">Recent Posts</h5>
@@ -20,7 +20,8 @@ export default {
   name: 'RecentPosts',
   components: { BlogCard, },
   props: {
-    articles: []
+    articles: [],
+    dense: Boolean
   },
 }
 </script>
