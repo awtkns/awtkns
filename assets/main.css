@@ -15,3 +15,7 @@
 .v-application pre code:after {
   content: none;
 }
+
+h1 {
+  font-family: "Playfair Display", serif;
+}
