@@ -1,5 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
-import FMMode from 'frontmatter-markdown-loader/mode'
+// import FMMode from 'frontmatter-markdown-loader/mode'
 
 export default {
   mode: 'spa',
@@ -22,6 +22,14 @@ export default {
       {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Quicksand&display=swap'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Quicksand&display=swap'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display&display=swap'
       }
       ]
   },
@@ -39,7 +47,8 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/firebase'
+    '@nuxtjs/firebase',
+    '@nuxt/content'
   ],
   router: {
     middleware: 'layout'
@@ -59,6 +68,14 @@ export default {
     services: {
       realtimeDb: true,
       analytics:  process.env.NODE_ENV === 'production'
+    }
+  },
+
+  content: {
+    markdown: {
+      prism: {
+        theme: './assets/darcula.css'
+      }
     }
   },
 
@@ -83,19 +100,19 @@ export default {
     }
   },
 
-  build: {
-    extend(config, ctx) {
-      const markdownIt = require('markdown-it');
-      const markdownItPrism = require('markdown-it-prism');
-
-      config.module.rules.push({
-          test: /\.md$/,
-          loader: "frontmatter-markdown-loader",
-          options: {
-            mode: [FMMode.VUE_COMPONENT],
-            markdownIt: markdownIt({ html: true }).use(markdownItPrism)
-          }
-        })
-    }
-  }
+  // build: {
+  //   extend(config, ctx) {
+  //     const markdownIt = require('markdown-it');
+  //     const markdownItPrism = require('markdown-it-prism');
+  //
+  //     config.module.rules.push({
+  //         test: /\.md$/,
+  //         loader: "frontmatter-markdown-loader",
+  //         options: {
+  //           mode: [FMMode.VUE_COMPONENT],
+  //           markdownIt: markdownIt({ html: true }).use(markdownItPrism)
+  //         }
+  //       })
+  //   }
+  // }
 }

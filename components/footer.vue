@@ -32,7 +32,7 @@ export default {
       { icon: mdiEmail, link: 'mailto:cadamrun@gmail.com' },
       { icon: mdiGithubCircle, link: 'https://github.com/awtkns' },
       { icon: mdiLinkedin, link: 'https://www.linkedin.com/in/adam-watkins-yvr/' },
-      { icon: mdiInstagram, link: 'https://www.instagram.com/' }
+      { icon: mdiInstagram, link: 'https://www.instagram.com/adamcwatkins/' }
     ]
   }),
   computed: {
