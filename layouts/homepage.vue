@@ -27,7 +27,7 @@
 <!-- Title Text -->
         <v-row :align="$vuetify.breakpoint.smAndDown ? 'center' : 'end'" justify="center">
           <v-col class="text-center">
-            <VueTypedJs v-if="isHomepage" :strings="['Adam Watkins', 'Full-Stack Developer', 'Adam Watkins']">
+            <VueTypedJs v-if="isHomepage" :strings="['Adam Watkins', 'Software Engineer', 'Adam Watkins']">
               <div class="typing display-3 font-weight-bold text-center" style="color: #FDFBFB"></div>
             </VueTypedJs>
           </v-col>

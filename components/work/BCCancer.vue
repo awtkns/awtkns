@@ -5,7 +5,7 @@
         <v-card-text>
           <h1 class="display-1">Full Stack Developer</h1>
           <h2 class="title">BC Cancer Research Center</h2>
-          <h3 class="subtitle-1">Jan 2020 - Present</h3>
+          <h3 class="subtitle-1">Jan 2020 - Apr 2021</h3>
         </v-card-text>
       </div>
     </v-card>

@@ -5,7 +5,7 @@
         <v-card-text>
           <h1 class="display-1">Teaching Assistant</h1>
           <h2 class="title">Algorithms and Data Structures II</h2>
-          <h3 class="subtitle-1">Sept 2020 - Present</h3>
+          <h3 class="subtitle-1">Sept 2020 - Apr 2021</h3>
         </v-card-text>
       </div>
     </v-card>
